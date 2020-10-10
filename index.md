@@ -60,9 +60,9 @@ See also a formalisation of various sorting algorithms with `sauto`:
 
 ## Installation
 
-CoqHammer can be installed [via opam](#opam-installation) or
-[from source](#manual-installation). To use the `hammer` tactic you
-also need to
+CoqHammer can be installed [via opam](#opam-installation)
+(recommended) or [from source](#manual-installation). To use the
+`hammer` tactic you also need to
 [install some provers](#installation-of-first-order-provers).
 
 CoqHammer has been tested on Linux and Mac OS X.
