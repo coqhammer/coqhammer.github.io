@@ -777,6 +777,21 @@ that only the `Tactics` module is loaded and not the hammer plugin.
     use functional extensionality and get many unreconstructible
     proofs. Default: off.
 
+### Debugging hammer
+
+The following commands are useful for debugging the `hammer` tactic.
+
+command                          | description
+-------------------------------- | ---------------------------------------------------------
+`Set Hammer Debug.`              |  Makes `hammer` print diagnostic info.
+`Hammer_print "name"`            |  Prints object `name` in hhterm format.
+`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.12/src/plugin/tptp_out.ml) module.
+`hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
+`Hammer_features "name"`         |  Prints the features of `name`, bypassing the cache.
+`Hammer_features_cached "name"`  |  Prints the features of `name`, using and possibly modifying the cache.
+`hammer_features`                |  Prints the features of the current goal.
+`Hammer_objects`                 |  Prints the number of accessible objects.
+
 ## Papers about CoqHammer
 
 1. Ł. Czajka, C. Kaliszyk, [Hammer for Coq: Automation for Dependent Type Theory](https://link.springer.com/article/10.1007/s10817-018-9458-4), Journal of Automated Reasoning, 2018
@@ -793,20 +808,6 @@ that only the `Tactics` module is loaded and not the hammer plugin.
    used by the `hammer` tactic.
 
 4. Ł. Czajka, B. Ekici, C. Kaliszyk, [Concrete Semantics with Coq and CoqHammer](https://arxiv.org/abs/1808.06413), CICM 2018
-
-## Debugging
-
-The following commands are useful for debugging.
-
-command                          | description
--------------------------------- | ---------------------------------------------------------
-`Hammer_print "name"`            |  Prints object `name` in hhterm format.
-`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.12/src/plugin/tptp_out.ml) module.
-`hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
-`Hammer_features "name"`         |  Prints the features of `name`, bypassing the cache.
-`Hammer_features_cached "name"`  |  Prints the features of `name`, using and possibly modifying the cache.
-`hammer_features`                |  Prints the features of the current goal.
-`Hammer_objects`                 |  Prints the number of accessible objects.
 
 ## Copyright and license
 
