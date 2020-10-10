@@ -1,7 +1,6 @@
 ## Description
 
-CoqHammer is an automated reasoning tool for Coq. It significantly
-enhances proof automation in Coq.
+CoqHammer is an automated reasoning tool for Coq.
 
 Since version 1.3, the CoqHammer system consists of two major separate
 components.
