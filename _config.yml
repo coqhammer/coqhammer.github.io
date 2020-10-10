@@ -2,8 +2,8 @@ theme: jekyll-theme-cayman
 title: CoqHammer
 description: Proof Automation for Dependent Type Theory
 
-is_project_page: true
 show_downloads: false
 
 github:
+  is_project_page: true
   repository_url: "https://github.com/lukaszcz/coqhammer"
