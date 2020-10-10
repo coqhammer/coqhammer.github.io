@@ -7,6 +7,6 @@ show_downloads: false
 github:
   is_project_page: true
   repository_url: "https://github.com/lukaszcz/coqhammer"
-  repository_name: "CoqHammer"
+  repository_name: CoqHammer
   owner_utl: "http://www.mimuw.edu.pl/~lukaszcz"
   owner_name: "Lukasz Czajka"
