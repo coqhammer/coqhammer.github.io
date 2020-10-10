@@ -160,7 +160,7 @@ most suited for standalone use.
 
 Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples).
 
-### Other tactics from the Tactics module
+### Tactics list
 
 In addition to the solvers and the simplifiers listed in the previous
 section, the `Tactics` module contains a number of handy tactics which
@@ -790,4 +790,6 @@ Copyright (c) 2017-2018, Cezary Kaliszyk, University of Innsbruck.
 
 Distributed under the terms of LGPL 2.1.
 
-See [CREDITS](https://github.com/lukaszcz/coqhammer/CREDITS.md) for a full list of contributors.
+See
+[CREDITS](https://github.com/lukaszcz/coqhammer/tree/coq8.12/CREDITS.md)
+for a full list of contributors.
