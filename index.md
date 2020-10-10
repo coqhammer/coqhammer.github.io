@@ -17,7 +17,7 @@ components.
    not invoke any external ATPs. For effective use, `sauto` typically
    needs some configuration by providing appropriate options.
 
-   See the [Sauto](#Sauto) section below.
+   See the [Sauto](#sauto) section below.
 
 2. The `hammer` automated reasoning tool which combines learning from
    previous proofs with the translation of problems to the logics of
@@ -40,7 +40,7 @@ components.
    (e.g. higher-order functions, boolean reflection or sophisticated
    uses of dependent types).
 
-   See the [Hammer](#Hammer) section below.
+   See the [Hammer](#hammer) section below.
 
 ## Tutorial
 
@@ -74,6 +74,9 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 opam install coq-hammer
 ```
 
+To use the `hammer` tactic you need to
+[install some provers](#installation-of-first-order-provers).
+
 If you are only interested in `sauto` and related tactics, they
 can be installed standalone (without the hammer plugin) via OPAM after
 adding the `coq-released` repository as above:
@@ -91,8 +94,7 @@ CoqHammer release from
 and run `make` followed by `make install`. Then optionally run `make
 tests` to check if everything works. Some of the tests may fail if
 your machine is not fast enough or you do not have all provers
-installed. More information about provers is
-[provided below](#installation-of-first-order-provers).
+installed.
 
 To instead build and install the tactics manually, use `make tactics`
 followed by `make install-tactics`. The tactics may be tested with
@@ -158,7 +160,7 @@ Additional variants of the solvers are used in the reconstruction
 backend of the `hammer` tactic. The solvers listed here are the ones
 most suited for standalone use.
 
-The are some examples in the [`examples`](examples) directory.
+Some examples are available [here](https://github.com/lukaszcz/coqhammer/examples).
 
 ### Other tactics from the Tactics module
 
