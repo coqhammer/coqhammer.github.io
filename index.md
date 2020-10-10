@@ -1,6 +1,7 @@
 ## Description
 
-CoqHammer is an automated reasoning tool for Coq.
+CoqHammer is an automated reasoning tool for Coq. It helps in your
+search for Coq proofs.
 
 Since version 1.3, the CoqHammer system consists of two major separate
 components.
@@ -49,17 +50,19 @@ CoqHammer video tutorial:
 [part 2 (hammer)](https://www.youtube.com/watch?v=EEmpVCSqShA&list=PLXXF_svQE_b_vja6TWFbGNB266Et8m5yC).
 
 The tutorial files are available
-[here](https://github.com/lukaszcz/coqhammer/examples/tutorial).
+[here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
 
 ## Installation
 
-### Requirements
+CoqHammer can be installed [via opam](#opam-installation) or
+[from source](#manual-installation). To use the `hammer` tactic you
+also need to
+[install some provers](#installation-of-first-order-provers).
 
-- [Coq 8.12](https://github.com/coq/coq)
-- for `hammer`: automated provers ([Vampire](https://vprover.github.io/download.html), [CVC4](http://cvc4.cs.stanford.edu/downloads/), [Eprover](http://www.eprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
+CoqHammer has been tested on Linux and Mac OS X.
 
 Note that some old versions of Proof General encounter problems with
 the plugin. If you use Proof General you might need the most recent
@@ -74,9 +77,6 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 opam install coq-hammer
 ```
 
-To use the `hammer` tactic you need to
-[install some provers](#installation-of-first-order-provers).
-
 If you are only interested in `sauto` and related tactics, they
 can be installed standalone (without the hammer plugin) via OPAM after
 adding the `coq-released` repository as above:
@@ -84,9 +84,7 @@ adding the `coq-released` repository as above:
 opam install coq-hammer-tactics
 ```
 
-CoqHammer has been tested on Linux and Mac OS X.
-
-### Source installation
+### Manual installation
 
 To instead build and install CoqHammer manually, download the latest
 CoqHammer release from
@@ -160,7 +158,7 @@ Additional variants of the solvers are used in the reconstruction
 backend of the `hammer` tactic. The solvers listed here are the ones
 most suited for standalone use.
 
-Some examples are available [here](https://github.com/lukaszcz/coqhammer/examples).
+Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples).
 
 ### Other tactics from the Tactics module
 
@@ -679,7 +677,8 @@ command                          | description
 `Hammer_version`                 |  Prints the version of CoqHammer.
 `Hammer_cleanup`                 |  Resets the hammer cache.
 
-There are some examples in the [`examples`](examples) directory.
+[This](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples)
+directory contains some examples.
 
 The intended use of the `hammer` tactic is to replace it upon success
 with the reconstruction tactic shown in the response window. This
