@@ -51,9 +51,9 @@ The tutorial files are available
 [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
 Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
-`lq:`. Use your browser's "find" function to search for their
-descriptions in the [Options for sauto](#options-for-sauto) section of
-this page.
+`lq:`, `brefl:`. Use your browser's "find" function to search for
+their descriptions in the [Options for sauto](#options-for-sauto)
+section of this page.
 
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
@@ -155,7 +155,8 @@ explanation of these options.
 The `sdone` tactic is used by `sauto` as the final tactic at the
 leaves of the proof search tree (see the `final:` and `finish:`
 options). The `strivial` tactic is just `srun (sfinal sdone)`. The
-`srun` and `sfinal` tactics are described in the next section.
+`srun` and `sfinal` tactics are described in the
+[Extra tactics](#extra-tactics) section.
 
 Additional variants of the solvers are used in the reconstruction
 backend of the `hammer` tactic. The solvers listed here are the ones
@@ -163,149 +164,11 @@ most suited for standalone use.
 
 Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples).
 
-### Tactics list
-
-In addition to the solvers and the simplifiers listed in the previous
-section, the `Tactics` module contains a number of handy tactics which
-are used internally by `sauto`.
-
-* `sdestruct t`
-
-  Destruct `t` in the "right" way, introducing appropriate hypotheses
-  into the context and handling boolean terms correctly (automatically
-  performing boolean reflection).
-
-* `dep_destruct t`
-
-  Dependent destruction of `t`. A simple wrapper around the `dependent
-  destruction` tactic from the Program module.
-
-* `sinvert t`
-
-  Inversion of the conclusion of `t`. The type of `t` may be quantified -
-  then new existential variables are introduced or new subgoals are
-  generated for the arguments.
-
-* `sdepinvert t`
-
-  Dependent inversion of the conclusion of `t`. The same as `sinvert
-  t` but may use the `depelim` tactic for inversion.
-
-* `sapply t`
-
-  Apply `t` modulo simple heuristic equational reasoning. See the
-  `sapp:` option.
-
-* `bool_reflect`
-
-  Boolean reflection in the goal and in all hypotheses. See the
-  [Boolean reflection](#boolean-reflection) section.
-
-* `use lem1, .., lemn`
-
-  Add the listed lemmas at the top of the context and simplify them.
-
-* `srun tac <sauto-options>`
-
-  The `srun` tactical first interprets sauto options (see
-  [Options for sauto](#options-for-sauto)) and performs `sauto`
-  initialisation, then runs `unshelve solve [ tac ]`, and then tries
-  to solve the unshelved subgoals with `auto`, `easy` and `do 10
-  constructor`.
-
-  Only the following options are interpreted by `srun`: `use:`,
-  `unfold:`, `unfold!:`, `brefl:`, `brefl!:`, `red:`, `ered:`,
-  `sig:`. Other options have no effect.
-
-  The `sauto` initialisation performed by `srun` executes the actions
-  corresponding to the options listed here. The default values of the
-  options are like for `sauto`.
-
-* `sfinal tac`
-
-  Perform "final" simplifications of the goal (simplifying hypotheses,
-  eliminating universally quantified disjunctions and existentials)
-  and solve all the resulting subgoals with `tac`. The `sfinal tac`
-  tactic invocation fails if `tac` does not solve some of the
-  resulting subgoals.
-
-* `forwarding`
-
-  Limited forward reasoning corresponding to the `fwd:` option.
-
-* `forward_reasoning n`
-
-  Repeated forward reasoning with repetition limit `n`. This is
-  similar to but not exactly the same as `do n forwarding`.
-
-* `simpl_sigma`
-
-  Simplifications for sigma-types. Composed of two tactics:
-  `destruct_sigma` which eagerly destructs all elements of subset
-  types occurring as arguments to the first projection, and
-  `invert_sigma` which is a faster but weaker version of
-  `inversion_sigma` from the standard library. The `simpl_sigma`
-  tactic corresponds to the `sig:` option.
-
-* `generalize proofs`
-* `generalize proofs in H`
-* `generalize proofs in *`
-
-  Generalizes by proof terms occurring in the goal and/or a
-  hypothesis. Corresponds to the `prf:` option.
-
-* `srewriting`
-
-  Directed rewriting with the hypotheses which may be oriented using
-  LPO. See the `drew:` and `erew:` options.
-
-* `simple_inverting`
-* `simple_inverting_dep`
-
-  Perform "simple inversion" corresponding to the `sinv:` option. The
-  `_dep` version may use the `depelim` tactic.
-
-* `eager_inverting`
-* `eager_inverting_dep`
-
-  Perform "eager simple elimination" corresponding to the `einv:`
-  option. The `_dep` version may use the `depelim` tactic.
-
-* `case_split`
-* `case_split_dep`
-
-  Eliminate one discriminee of a match expression occurring in the
-  goal or in a hypothesis. The `_dep` version may use the `depelim`
-  tactic.
-
-* `case_splitting`
-* `case_splitting_dep`
-
-  Eagerly eliminate all discriminees of match expressions occurring in
-  the goal or in a hypothesis. This corresponds to the action enabled by
-  setting `cases: *` and `ecases: on`. The `_dep` version may use the
-  `depelim` tactic.
-
-* `simple_splitting`
-
-  Eagerly apply constructors of "simple" inductive types -
-  non-recursive inductive types with exactly one constructor such that
-  application of the constructor does not introduce new existential
-  variables. This corresponds to `split: *`.
-
-* `simple_splitting logic`
-
-  Simple splitting for logical connectives only.
-
-* `ssolve`
-
-  The `ssolve` tactic is just
-  ```coq
-  solve [ (intuition auto); try sfinal sdone; try congruence 24;
-           try easy; try solve [ econstructor; sfinal sdone ] ].
-  ```
-
 ### Options for sauto
+
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
+`lq:`, `brefl:`. Use your browser's "find" function to search for
+their descriptions in this section.
 
 The options take arguments specified by:
 ```
@@ -591,6 +454,148 @@ are for `sauto`.
   Settting `lq: on` has the same effect as setting `lazy: on` and
   `quick: on`. Setting `lq: off` has no effect.
 
+### Extra Tactics
+
+In addition to the solvers and the simplifiers listed [above](#sauto),
+the `Tactics` module contains a number of handy tactics which are used
+internally by `sauto`.
+
+* `sdestruct t`
+
+  Destruct `t` in the "right" way, introducing appropriate hypotheses
+  into the context and handling boolean terms correctly (automatically
+  performing boolean reflection).
+
+* `dep_destruct t`
+
+  Dependent destruction of `t`. A simple wrapper around the `dependent
+  destruction` tactic from the Program module.
+
+* `sinvert t`
+
+  Inversion of the conclusion of `t`. The type of `t` may be quantified -
+  then new existential variables are introduced or new subgoals are
+  generated for the arguments.
+
+* `sdepinvert t`
+
+  Dependent inversion of the conclusion of `t`. The same as `sinvert
+  t` but may use the `depelim` tactic for inversion.
+
+* `sapply t`
+
+  Apply `t` modulo simple heuristic equational reasoning. See the
+  `sapp:` option.
+
+* `bool_reflect`
+
+  Boolean reflection in the goal and in all hypotheses. See the
+  [Boolean reflection](#boolean-reflection) section.
+
+* `use lem1, .., lemn`
+
+  Add the listed lemmas at the top of the context and simplify them.
+
+* `srun tac <sauto-options>`
+
+  The `srun` tactical first interprets sauto options (see
+  [Options for sauto](#options-for-sauto)) and performs `sauto`
+  initialisation, then runs `unshelve solve [ tac ]`, and then tries
+  to solve the unshelved subgoals with `auto`, `easy` and `do 10
+  constructor`.
+
+  Only the following options are interpreted by `srun`: `use:`,
+  `unfold:`, `unfold!:`, `brefl:`, `brefl!:`, `red:`, `ered:`,
+  `sig:`. Other options have no effect.
+
+  The `sauto` initialisation performed by `srun` executes the actions
+  corresponding to the options listed here. The default values of the
+  options are like for `sauto`.
+
+* `sfinal tac`
+
+  Perform "final" simplifications of the goal (simplifying hypotheses,
+  eliminating universally quantified disjunctions and existentials)
+  and solve all the resulting subgoals with `tac`. The `sfinal tac`
+  tactic invocation fails if `tac` does not solve some of the
+  resulting subgoals.
+
+* `forwarding`
+
+  Limited forward reasoning corresponding to the `fwd:` option.
+
+* `forward_reasoning n`
+
+  Repeated forward reasoning with repetition limit `n`. This is
+  similar to but not exactly the same as `do n forwarding`.
+
+* `simpl_sigma`
+
+  Simplifications for sigma-types. Composed of two tactics:
+  `destruct_sigma` which eagerly destructs all elements of subset
+  types occurring as arguments to the first projection, and
+  `invert_sigma` which is a faster but weaker version of
+  `inversion_sigma` from the standard library. The `simpl_sigma`
+  tactic corresponds to the `sig:` option.
+
+* `generalize proofs`
+* `generalize proofs in H`
+* `generalize proofs in *`
+
+  Generalizes by proof terms occurring in the goal and/or a
+  hypothesis. Corresponds to the `prf:` option.
+
+* `srewriting`
+
+  Directed rewriting with the hypotheses which may be oriented using
+  LPO. See the `drew:` and `erew:` options.
+
+* `simple_inverting`
+* `simple_inverting_dep`
+
+  Perform "simple inversion" corresponding to the `sinv:` option. The
+  `_dep` version may use the `depelim` tactic.
+
+* `eager_inverting`
+* `eager_inverting_dep`
+
+  Perform "eager simple elimination" corresponding to the `einv:`
+  option. The `_dep` version may use the `depelim` tactic.
+
+* `case_split`
+* `case_split_dep`
+
+  Eliminate one discriminee of a match expression occurring in the
+  goal or in a hypothesis. The `_dep` version may use the `depelim`
+  tactic.
+
+* `case_splitting`
+* `case_splitting_dep`
+
+  Eagerly eliminate all discriminees of match expressions occurring in
+  the goal or in a hypothesis. This corresponds to the action enabled by
+  setting `cases: *` and `ecases: on`. The `_dep` version may use the
+  `depelim` tactic.
+
+* `simple_splitting`
+
+  Eagerly apply constructors of "simple" inductive types -
+  non-recursive inductive types with exactly one constructor such that
+  application of the constructor does not introduce new existential
+  variables. This corresponds to `split: *`.
+
+* `simple_splitting logic`
+
+  Simple splitting for logical connectives only.
+
+* `ssolve`
+
+  The `ssolve` tactic is just
+  ```coq
+  solve [ (intuition auto); try sfinal sdone; try congruence 24;
+           try easy; try solve [ econstructor; sfinal sdone ] ].
+  ```
+
 ### Boolean reflection
 
 Importing the Reflect module with
@@ -763,7 +768,7 @@ that only the `Tactics` module is loaded and not the hammer plugin.
 
 * `Set/Unset Hammer ClosureGuards.`
 
-    Should guards be generated for types of free variables? setting
+    Should guards be generated for types of free variables? Setting
     this to "on" will typically harm the hammer success rate, but it
     may help with functional extensionality; set this to "on" if you
     use functional extensionality and get many unreconstructible
@@ -793,7 +798,7 @@ The following commands are useful for debugging.
 command                          | description
 -------------------------------- | ---------------------------------------------------------
 `Hammer_print "name"`            |  Prints object `name` in hhterm format.
-`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](src/plugin/tptp_out.ml) module.
+`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.12/src/plugin/tptp_out.ml) module.
 `hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
 `Hammer_features "name"`         |  Prints the features of `name`, bypassing the cache.
 `Hammer_features_cached "name"`  |  Prints the features of `name`, using and possibly modifying the cache.
