@@ -783,7 +783,7 @@ The following commands are useful for debugging the `hammer` tactic.
 
 command                          | description
 -------------------------------- | ---------------------------------------------------------
-`Set Hammer Debug.`              |  Makes `hammer` print diagnostic info.
+`Set Hammer Debug`               |  Makes `hammer` print diagnostic info.
 `Hammer_print "name"`            |  Prints object `name` in hhterm format.
 `Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.12/src/plugin/tptp_out.ml) module.
 `hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
