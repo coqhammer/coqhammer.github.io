@@ -69,7 +69,7 @@ CoqHammer has been tested on Linux and Mac OS X.
 
 Note that some old versions of Proof General encounter problems with
 the plugin. If you use Proof General you might need the most recent
-version obtained directly from https://proofgeneral.github.io.
+version obtained directly from [https://proofgeneral.github.io](https://proofgeneral.github.io).
 
 ### Opam installation
 
@@ -91,7 +91,7 @@ opam install coq-hammer-tactics
 
 To instead build and install CoqHammer manually, download the latest
 CoqHammer release from
-[github](https://github.com/lukaszcz/coqhammer/releases), unpack it
+[GitHub](https://github.com/lukaszcz/coqhammer/releases), unpack it
 and run `make` followed by `make install`. Then optionally run `make
 tests` to check if everything works. Some of the tests may fail if
 your machine is not fast enough or you do not have all provers
@@ -114,15 +114,18 @@ available in the path (under the command name in brackets): Vampire
 recommended to have all four ATPs, or at least Vampire and CVC4.
 
 The websites for the provers are:
-- Vampire: https://vprover.github.io.
-- CVC4: http://cvc4.cs.stanford.edu. CVC4 needs to be version 1.6 or
-later. Earlier versions do not fully support the TPTP format. It is
-recommended to have the better-performing GPL version of CVC4 instead
-of the BSD version.
-- Eprover: http://www.eprover.org.
-- Z3: https://github.com/Z3Prover/z3/releases. Note that the default
-version of Z3 does not support the TPTP format. You need to compile
-the TPTP frontend located in `examples/tptp` in the Z3 source package.
+- Vampire: [https://vprover.github.io](https://vprover.github.io).
+- CVC4:
+[http://cvc4.cs.stanford.edu](http://cvc4.cs.stanford.edu). CVC4 needs
+to be version 1.6 or later. Earlier versions do not fully support the
+TPTP format. It is recommended to have the better-performing GPL
+version of CVC4 instead of the BSD version.
+- Eprover: [http://www.eprover.org](http://www.eprover.org).
+- Z3:
+[https://github.com/Z3Prover/z3/releases](https://github.com/Z3Prover/z3/releases). Note
+that the default version of Z3 does not support the TPTP format. You
+need to compile the TPTP frontend located in `examples/tptp` in the Z3
+source package.
 
 ## Sauto
 
@@ -454,7 +457,7 @@ are for `sauto`.
   Settting `lq: on` has the same effect as setting `lazy: on` and
   `quick: on`. Setting `lq: off` has no effect.
 
-### Extra Tactics
+### Extra tactics
 
 In addition to the solvers and the simplifiers listed [above](#sauto),
 the `Tactics` module contains a number of handy tactics which are used
@@ -600,7 +603,7 @@ internally by `sauto`.
 
 Importing the Reflect module with
 ```coq
-From Hammer Require Import Reflect
+From Hammer Require Import Reflect.
 ```
 declares `is_true` as a coercion and makes available the following tactics
 related to boolean reflection.
@@ -685,8 +688,8 @@ command                          | description
 `Hammer_version`                 |  Prints the version of CoqHammer.
 `Hammer_cleanup`                 |  Resets the hammer cache.
 
-[This](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples)
-directory contains some examples.
+[This directory](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples)
+contains some examples.
 
 The intended use of the `hammer` tactic is to replace it upon success
 with the reconstruction tactic shown in the response window. This
