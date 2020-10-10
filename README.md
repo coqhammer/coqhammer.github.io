@@ -1,1 +1,1 @@
-# coqhammer.github.io
+# CoqHammer
