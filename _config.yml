@@ -2,6 +2,9 @@ theme: jekyll-theme-leap-day
 title: CoqHammer
 description: Proof Automation for Dependent Type Theory
 
+github:
+  repository_url: "https://github.com/lukaszcz/coqhammer"
+
 navbar-links:
   View on github: "https://github.com/lukaszcz/coqhammer"
   Download: "https://github.com/lukaszcz/coqhammer/releases"
