@@ -1,10 +1,7 @@
-CoqHammer (dev) for Coq 8.12
+## Description
 
-[![Travis](https://travis-ci.org/lukaszcz/coqhammer.svg?branch=coq8.12)](https://travis-ci.org/lukaszcz/coqhammer/builds)
-
-CoqHammer video tutorial:
-[part 1 (sauto)](https://www.youtube.com/watch?v=0c_utk9bVgU&list=PLXXF_svQE_b-9A5p2OKU7Tjz-NcE7H2xg),
-[part 2 (hammer)](https://www.youtube.com/watch?v=EEmpVCSqShA&list=PLXXF_svQE_b_vja6TWFbGNB266Et8m5yC).
+CoqHammer is an automated reasoning tool for Coq. It significantly
+enhances proof automation in Coq.
 
 Since version 1.3, the CoqHammer system consists of two major separate
 components.
@@ -46,26 +43,30 @@ components.
 
    See the [Hammer](#Hammer) section below.
 
-Tutorial
---------
+## Tutorial
 
 CoqHammer video tutorial:
 [part 1 (sauto)](https://www.youtube.com/watch?v=0c_utk9bVgU&list=PLXXF_svQE_b-9A5p2OKU7Tjz-NcE7H2xg),
 [part 2 (hammer)](https://www.youtube.com/watch?v=EEmpVCSqShA&list=PLXXF_svQE_b_vja6TWFbGNB266Et8m5yC).
 
-The tutorial files are available in
-[examples/tutorial](examples/tutorial).
+The tutorial files are available
+[here](https://github.com/lukaszcz/coqhammer/examples/tutorial).
 
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
 
-Requirements
-------------
+## Installation
+
+### Requirements
+
 - [Coq 8.12](https://github.com/coq/coq)
 - for `hammer`: automated provers ([Vampire](https://vprover.github.io/download.html), [CVC4](http://cvc4.cs.stanford.edu/downloads/), [Eprover](http://www.eprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
 
-Installation
-------------
+Note that some old versions of Proof General encounter problems with
+the plugin. If you use Proof General you might need the most recent
+version obtained directly from https://proofgeneral.github.io.
+
+### Opam installation
 
 The latest release of CoqHammer is most easily installed via
 [OPAM](https://opam.ocaml.org/):
@@ -74,35 +75,54 @@ opam repo add coq-released https://coq.inria.fr/opam/released
 opam install coq-hammer
 ```
 
-To instead build and install CoqHammer manually, run `make` followed
-by `make install`. Then optionally run `make tests` to check if
-everything works. Some of the tests may fail if your machine is not
-fast enough or you do not have all provers installed. More information
-about provers is [provided below](#installation-of-first-order-provers).
-
 If you are only interested in `sauto` and related tactics, they
 can be installed standalone (without the hammer plugin) via OPAM after
 adding the `coq-released` repository as above:
 ```
 opam install coq-hammer-tactics
 ```
+
+CoqHammer has been tested on Linux and Mac OS X.
+
+### Source installation
+
+To instead build and install CoqHammer manually, download the latest
+CoqHammer release from
+[github](https://github.com/lukaszcz/coqhammer/releases), unpack it
+and run `make` followed by `make install`. Then optionally run `make
+tests` to check if everything works. Some of the tests may fail if
+your machine is not fast enough or you do not have all provers
+installed. More information about provers is
+[provided below](#installation-of-first-order-provers).
+
 To instead build and install the tactics manually, use `make tactics`
 followed by `make install-tactics`. The tactics may be tested with
 `make test-tactics`.
-
-CoqHammer has been tested on Linux and Mac OS X.
 
 The command `make install` will try to install the `predict` and
 `htimeout` programs into the directory specified by the `COQBIN`
 environment variable. If this variable is not set then a binary
 directory is guessed basing on the Coq library directory.
 
-Note that some old versions of Proof General encounter problems with
-the plugin. If you use Proof General you might need the most recent
-version obtained directly from https://proofgeneral.github.io.
+### Installation of first-order provers
 
-Sauto
------
+To use the `hammer` tactic you need at least one of the following ATPs
+available in the path (under the command name in brackets): Vampire
+(`vampire`), CVC4 (`cvc4`), Eprover (`eprover`), Z3 (`z3_tptp`). It is
+recommended to have all four ATPs, or at least Vampire and CVC4.
+
+The websites for the provers are:
+- Vampire: https://vprover.github.io.
+- CVC4: http://cvc4.cs.stanford.edu. CVC4 needs to be version 1.6 or
+later. Earlier versions do not fully support the TPTP format. It is
+recommended to have the better-performing GPL version of CVC4 instead
+of the BSD version.
+- Eprover: http://www.eprover.org.
+- Z3: https://github.com/Z3Prover/z3/releases. Note that the default
+version of Z3 does not support the TPTP format. You need to compile
+the TPTP frontend located in `examples/tptp` in the Z3 source package.
+
+## Sauto
 
 The `Tactics` module contains `sauto` and related tactics. These
 tactics are used by the `hammer` tool for proof reconstruction. To use
@@ -141,8 +161,7 @@ most suited for standalone use.
 
 The are some examples in the [`examples`](examples) directory.
 
-Other tactics from the Tactics module
--------------------------------------
+### Other tactics from the Tactics module
 
 In addition to the solvers and the simplifiers listed in the previous
 section, the `Tactics` module contains a number of handy tactics which
@@ -284,8 +303,7 @@ are used internally by `sauto`.
            try easy; try solve [ econstructor; sfinal sdone ] ].
   ```
 
-Options for sauto
------------------
+### Options for sauto
 
 The options take arguments specified by:
 ```
@@ -571,8 +589,7 @@ are for `sauto`.
   Settting `lq: on` has the same effect as setting `lazy: on` and
   `quick: on`. Setting `lq: off` has no effect.
 
-Boolean reflection
-------------------
+### Boolean reflection
 
 Importing the Reflect module with
 ```coq
@@ -643,8 +660,7 @@ related to boolean reflection.
 
   Perform boolean reflection and then run `lia`.
 
-Hammer
-------
+## Hammer
 
 In your Coq file editor or toplevel (e.g., `coqide` or `coqtop`),
 first load the hammer plugin:
@@ -672,27 +688,85 @@ guaranteed to be reproducible. If all uses of `hammer` in a file have
 been replaced with reconstruction tactics, it is recommended to ensure
 that only the `Tactics` module is loaded and not the hammer plugin.
 
-Installation of first-order provers
------------------------------------
+### Hammer options
 
-To use the `hammer` tactic you need at least one of the following ATPs
-available in the path (under the command name in brackets): Vampire
-(`vampire`), CVC4 (`cvc4`), Eprover (`eprover`), Z3 (`z3_tptp`). It is
-recommended to have all four ATPs, or at least Vampire and CVC4.
+* `Set/Unset Hammer Debug.`
+* `Set Hammer GSMode n.`
 
-The websites for the provers are:
-- Vampire: https://vprover.github.io.
-- CVC4: http://cvc4.cs.stanford.edu. CVC4 needs to be version 1.6 or
-later. Earlier versions do not fully support the TPTP format. It is
-recommended to have the better-performing GPL version of CVC4 instead
-of the BSD version.
-- Eprover: http://www.eprover.org.
-- Z3: https://github.com/Z3Prover/z3/releases. Note that the default
-version of Z3 does not support the TPTP format. You need to compile
-the TPTP frontend located in `examples/tptp` in the Z3 source package.
+    The hammer may operate in one of two modes: gs-mode or the
+    ordinary mode. If GSMode is set to n > 0 then n best strategies
+    (combination of prover, prediction method and number of
+    predictions) are run in parallel. Otherwise, if n = 0, then the
+    ordinary mode is active and the number of machine-learning
+    dependency predictions, the prediction method and whether to run
+    the ATPs in parallel are determined by the options below (Hammer
+    Predictions, Hammer PredictMethod and Hammer Parallel). It is
+    advisable to set GSMode to the number of cores your machine has,
+    plus/minus one. Default: 8.
 
-Papers about CoqHammer
-----------------------
+* `Set Hammer Predictions n.`
+
+    The number of predictions for machine-learning dependency
+    prediction.  Irrelevant if GSMode > 0. Default: 1024.
+
+* `Set Hammer PredictMethod "knn"/"nbayes".`
+
+    Irrelevant if GSMode > 0. Default: "knn".
+
+* `Set/Unset Hammer Parallel.`
+
+    Run ATPs in parallel. Irrelevant if GSMode > 0. Default: on.
+
+* `Set Hammer ATPLimit n.`
+
+    ATP time limit in seconds. Default: 20s.
+
+* `Set Hammer ReconstrLimit n.`
+
+    Time limit for proof reconstruction. Default: 5s.
+
+* `Set Hammer SAutoLimit n.`
+
+    Before invoking external ATPs the hammer first tries to solve the
+    goal using the `sauto` tactic with a time limit of `n` seconds. Default: 1s.
+
+* `Set/Unset Hammer Vampire/CVC4/Eprover/Z3.`
+
+* `Set Hammer PredictPath "/path/to/predict".`
+
+    Default: "predict".
+
+* `Set/Unset Hammer FilterProgram.`
+
+    Ignore dependencies from `Coq.Program.*`. Default: on.
+
+* `Set/Unset Hammer FilterClasses.`
+
+    Ignore dependencies from `Coq.Classes.*`. Default: on.
+
+* `Set/Unset Hammer FilterHurkens.`
+
+    Ignore dependencies from `Coq.Logic.Hurkens.*`. Default: on.
+
+* `Set Hammer MinimizationThreshold n.`
+
+    The minimum number of dependencies returned by an ATP for which
+    minimization is performed. Default: 8.
+
+* `Set/Unset Hammer SearchBlacklist.`
+
+    Ignore dependencies blacklisted with the `Search Blacklist`
+    vernacular command. Default: on.
+
+* `Set/Unset Hammer ClosureGuards.`
+
+    Should guards be generated for types of free variables? setting
+    this to "on" will typically harm the hammer success rate, but it
+    may help with functional extensionality; set this to "on" if you
+    use functional extensionality and get many unreconstructible
+    proofs. Default: off.
+
+## Papers about CoqHammer
 
 1. Ł. Czajka, C. Kaliszyk, [Hammer for Coq: Automation for Dependent Type Theory](https://link.springer.com/article/10.1007/s10817-018-9458-4), Journal of Automated Reasoning, 2018
 
@@ -709,83 +783,11 @@ Papers about CoqHammer
 
 4. Ł. Czajka, B. Ekici, C. Kaliszyk, [Concrete Semantics with Coq and CoqHammer](https://arxiv.org/abs/1808.06413), CICM 2018
 
-Archival CoqHammer versions
----------------------------
+## Copyright and license
 
-CoqHammer versions before 1.0.6 are available from: http://cl-informatik.uibk.ac.at/cek/coqhammer.
-
-Hammer options
---------------
-
-```coq
-Set/Unset Hammer Debug.
-Set Hammer GSMode n.
-(* The hammer may operate in one of two modes: gs-mode or the ordinary
-   mode. If GSMode is set to n > 0 then n best strategies (combination
-   of prover, prediction method and number of predictions) are run in
-   parallel. Otherwise, if n = 0, then the ordinary mode is active and
-   the number of machine-learning dependency predictions, the
-   prediction method and whether to run the ATPs in parallel are
-   determined by the options below (Hammer Predictions, Hammer
-   PredictMethod and Hammer Parallel). It is advisable to set GSMode
-   to the number of cores your machine has, plus/minus one. Default: 8 *)
-Set Hammer Predictions n.
-(* number of predictions for machine-learning dependency prediction;
-   irrelevant if GSMode > 0; default: 1024 *)
-Set Hammer PredictMethod "knn"/"nbayes".
-(* irrelevant if GSMode > 0; default: "knn" *)
-Set/Unset Hammer Parallel.
-(* run ATPs in parallel; irrelevant if GSMode > 0; default: on *)
-Set Hammer ATPLimit n.
-(* ATP time limit in seconds, default: 20s *)
-Set Hammer ReconstrLimit n.
-(* time limit for proof reconstruction, default: 5s *)
-Set Hammer SAutoLimit n.
-(* before invoking external ATPs the hammer first tries to solve the
-   goal using the sauto tactic with a time limit of n seconds; default: 1s *)
-Set/Unset Hammer Vampire/CVC4/Eprover/Z3.
-Set Hammer PredictPath "/path/to/predict". (* default: "predict" *)
-Set/Unset Hammer FilterProgram.
-(* ignore dependencies from Coq.Program.*, default: on *)
-Set/Unset Hammer FilterClasses.
-(* ignore dependencies from Coq.Classes.*, default: on *)
-Set/Unset Hammer FilterHurkens.
-(* ignore dependencies from Coq.Logic.Hurkens.*, default: on *)
-Set Hammer MinimizationThreshold n.
-(* the minimum number of dependencies returned by an ATP for which minimization is performed, default: 8 *)
-Set/Unset Hammer SearchBlacklist.
-(* ignore dependencies blacklisted with the Search Blacklist
-   vernacular command, default: on *)
-Set/Unset Hammer ClosureGuards.
-(* should guards be generated for types of free variables? setting
-   this to "on" will typically harm the hammer success rate, but it
-   may help with functional extensionality; set this to "on" if you
-   use functional extensionality and get many unreconstructible
-   proofs; default: off *)
-```
-
-Debugging
----------
-
-The following commands are useful for debugging.
-
-command                          | description
--------------------------------- | ---------------------------------------------------------
-`Hammer_print "name"`            |  Prints object `name` in hhterm format.
-`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](src/plugin/tptp_out.ml) module.
-`hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
-`Hammer_features "name"`         |  Prints the features of `name`, bypassing the cache.
-`Hammer_features_cached "name"`  |  Prints the features of `name`, using and possibly modifying the cache.
-`hammer_features`                |  Prints the features of the current goal.
-`Hammer_objects`                 |  Prints the number of accessible objects.
-
-Copyright and license
----------------------
-
-Copyright (c) 2017-2020, Lukasz Czajka, TU Dortmund University.
+Copyright (c) 2017-2020, Lukasz Czajka, TU Dortmund University.\
 Copyright (c) 2017-2018, Cezary Kaliszyk, University of Innsbruck.
 
-Distributed under the terms of LGPL 2.1, see the file
-[LICENSE](LICENSE).
+Distributed under the terms of LGPL 2.1.
 
-See [CREDITS](CREDITS.md) for a full list of contributors.
+See [CREDITS](https://github.com/lukaszcz/coqhammer/CREDITS.md) for a full list of contributors.
