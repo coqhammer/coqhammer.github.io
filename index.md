@@ -50,6 +50,11 @@ CoqHammer video tutorial:
 The tutorial files are available
 [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
+`lq:`. Use your browser's "find" function to search for their
+descriptions in the [Options for sauto](#options-for-sauto) section of
+this page.
+
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
 
