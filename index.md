@@ -1,5 +1,3 @@
-## Description
-
 CoqHammer is an automated reasoning tool for Coq. It helps in your
 search for Coq proofs.
 
