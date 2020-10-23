@@ -835,7 +835,7 @@ command                          | description
   you are interested in automatically finding inductive proofs or in
   interactive tactic recommendation, then you might want to try
   Tactician. On the other hand, we expect CoqHammer to be generally
-  stronger on the parts of Coq logic that it can handle well
+  stronger on the fragments of Coq logic that it can handle well
   (non-inductive, "close to" first-order, goal-directed proofs).
 
 ## Copyright and license
