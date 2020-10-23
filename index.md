@@ -819,7 +819,7 @@ command                          | description
   "modulo theory" facilities of the SMT solvers it supports (CVC4 and
   Z3), effectively treating them as if they were general ATPs. If what
   you need is predominantly SMT theory reasoning (e.g. reasoning about
-  linear arithemtic, bit vectors, arrays) then you might want to try
+  linear arithmetic, bit vectors, arrays) then you might want to try
   SMTCoq.
 
 - [Tactician](https://coq-tactician.github.io) is a tactic learner and
@@ -837,7 +837,6 @@ command                          | description
   Tactician. On the other hand, we expect CoqHammer to be generally
   stronger on the parts of Coq logic it can handle well
   (non-inductive, "close to" first-order, goal-directed proofs).
-
 
 ## Copyright and license
 
