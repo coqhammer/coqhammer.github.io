@@ -825,17 +825,17 @@ command                          | description
 - [Tactician](https://coq-tactician.github.io) is a tactic learner and
   prover for Coq. It uses machine learning methods to synthesise
   tactic scripts. In contrast, CoqHammer searches for proof terms
-  directly at the level of Coq's logic. A limitation of CoqHammer (in
+  directly in the logic of Coq. A limitation of CoqHammer (in
   particular of the `hammer` tactic which relies on first-order ATPs)
-  is that it might perform poorly with some features of Coq's
-  logic. An approach based on tactic script synthesis is not directly
-  limited in this way.
+  is that it might perform poorly on some fragments of Coq's logic. An
+  approach based on tactic script synthesis is not directly limited in
+  this way.
 
   In particular, by design CoqHammer will never perform induction. If
   you are interested in automatically finding inductive proofs or in
   interactive tactic recommendation, then you might want to try
   Tactician. On the other hand, we expect CoqHammer to be generally
-  stronger on the parts of Coq logic it can handle well
+  stronger on the parts of Coq logic that it can handle well
   (non-inductive, "close to" first-order, goal-directed proofs).
 
 ## Copyright and license
