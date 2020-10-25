@@ -58,8 +58,8 @@ section of this page.
 The `best` tactic (since 1.3.1) automatically finds the best
 options for `sauto`.
 
-An important thing to know is that `sauto` or `hammer` never perform
-induction. When induction is needed, it must be done manually.
+Note that `sauto` or `hammer` never perform induction. When induction
+is needed, it must be done manually.
 
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
@@ -149,8 +149,8 @@ different options. However, familiarity with different tactics from
 the `Tactics` module and with various `sauto` options often results in
 more effective use.
 
-An important thing to know is that `sauto` and related tactics never
-perform induction. When induction is needed, it must be done manually.
+Note that `sauto` and related tactics never perform induction. When
+induction is needed, it must be done manually.
 
 The `Tactics` module provides "solvers" which either solve the goal or
 fail, and "simplifiers" which simplify the goal but do not perform
@@ -729,6 +729,9 @@ external ATPs. The success of the `hammer` tactic itself is not
 guaranteed to be reproducible. If all uses of `hammer` in a file have
 been replaced with reconstruction tactics, it is recommended to ensure
 that only the `Tactics` module is loaded and not the hammer plugin.
+
+Note that `hammer` never performs induction. If induction is needed,
+it must be done manually before invoking `hammer`.
 
 ### Hammer options
 
