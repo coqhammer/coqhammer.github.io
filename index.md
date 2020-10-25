@@ -51,9 +51,15 @@ The tutorial files are available
 [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
 Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
-`lq:`, `brefl:`. Use your browser's "find" function to search for
-their descriptions in the [Options for sauto](#options-for-sauto)
+`lq:`, `brefl:`, `dep:`. Use your browser's "find" function to search
+for their descriptions in the [Options for sauto](#options-for-sauto)
 section of this page.
+
+The `best` tactic (since 1.3.1) automatically finds the best
+options for `sauto`.
+
+An important thing to know is that `sauto` or `hammer` never perform
+induction. When induction is needed, it must be done manually.
 
 See also a formalisation of various sorting algorithms with `sauto`:
 [https://github.com/lukaszcz/sortalgs](https://github.com/lukaszcz/sortalgs).
@@ -101,7 +107,7 @@ To instead build and install the tactics manually, use `make tactics`
 followed by `make install-tactics`. The tactics may be tested with
 `make test-tactics`.
 
-The command `make install` will try to install the `predict` and
+The command `make install` tries to install the `predict` and
 `htimeout` programs into the directory specified by the `COQBIN`
 environment variable. If this variable is not set then a binary
 directory is guessed basing on the Coq library directory.
@@ -137,12 +143,21 @@ them directly in your proof scripts first include:
 From Hammer Require Import Tactics.
 ```
 
-The module provides "solvers" which either solve the goal or fail, and
-"simplifiers" which simplify the goal but do not perform backtracking
-proof search. The simplifiers never fail. The solvers are based on
-variants of the `sauto` tactic or its sub-components. The simplifiers
-are based on variants of the heuristics and simplifications performed
-by `sauto` upon context change.
+The easiest way to use `sauto` is via the `best` tactic (since
+1.3.1). The `best` tactic tries a number of `sauto` variants with
+different options. However, familiarity with different tactics from
+the `Tactics` module and with various `sauto` options often results in
+more effective use.
+
+An important thing to know is that `sauto` and related tactics never
+perform induction. When induction is needed, it must be done manually.
+
+The `Tactics` module provides "solvers" which either solve the goal or
+fail, and "simplifiers" which simplify the goal but do not perform
+backtracking proof search. The simplifiers never fail. The solvers are
+based on variants of the `sauto` tactic or its sub-components. The
+simplifiers are based on variants of the heuristics and
+simplifications performed by `sauto` upon context change.
 
 Below we list the solvers and the simplifiers in the order of
 increasing strength and decreasing speed:
@@ -170,8 +185,11 @@ Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/co
 ### Options for sauto
 
 Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
-`lq:`, `brefl:`. Use your browser's "find" function to search for
-their descriptions in this section.
+`lq:`, `brefl:`, `dep:`. Use your browser's "find" function to search
+for their descriptions in this section.
+
+The `best` tactic (since 1.3.1) automatically finds the best
+options for `sauto`.
 
 The options take arguments specified by:
 ```
@@ -266,6 +284,11 @@ are for `sauto`.
 
   Directly limit the depth of proof search. Cancels the `limit:`
   option.
+
+* `time: <number>` (since 1.3.1)
+
+  Set the timeout in seconds. Currently, this is meaningful only for
+  the `best` tactic where the default is 1 second.
 
 * `finish: <tactic>`
 
@@ -368,6 +391,7 @@ are for `sauto`.
   off`. Default: `rew: on`.
 
 * `brefl: <bopt>`
+* `b: <bopt>` (since 1.3.1)
 
   Controls whether to perform boolean reflection, i.e., convert
   elements of `bool` applied to `is_true` into statements in
@@ -378,6 +402,7 @@ are for `sauto`.
   See also the [Boolean reflection](#boolean-reflection) section.
 
 * `brefl!: <bopt>`
+* `b!: <bopt>` (since 1.3.1)
 
   A primitive version of `brefl:` which when enabled does not
   automatically disable `ecases:`.
@@ -456,6 +481,12 @@ are for `sauto`.
 
   Settting `lq: on` has the same effect as setting `lazy: on` and
   `quick: on`. Setting `lq: off` has no effect.
+
+* `lqb: <bopt>` (since 1.3.1)
+* `qb: <bopt>` (since 1.3.1)
+* `lb: <bopt>` (since 1.3.1)
+
+  Compound options analogous to `lq:`.
 
 ### Extra tactics
 
@@ -772,9 +803,9 @@ that only the `Tactics` module is loaded and not the hammer plugin.
 * `Set/Unset Hammer ClosureGuards.`
 
     Should guards be generated for types of free variables? Setting
-    this to "on" will typically harm the hammer success rate, but it
-    may help with functional extensionality; set this to "on" if you
-    use functional extensionality and get many unreconstructible
+    this to "on" typically harms the hammer success rate, but it may
+    help with functional extensionality. Set this to "on" if you use
+    functional extensionality and get many unreconstructible
     proofs. Default: off.
 
 ### Debugging hammer
