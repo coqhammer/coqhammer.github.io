@@ -55,8 +55,10 @@ Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
 for their descriptions in the [Options for sauto](#options-for-sauto)
 section of this page.
 
-The `best` tactic (since 1.3.1) automatically finds the best
-options for `sauto`.
+The `best` tactic (since 1.3.1) automatically finds the best options
+for `sauto`. It doesn't, however, find the dependencies: lemmas
+(`use:`), inversions (`inv:`), or constructors (`ctrs:`). To find the
+dependencies automatically use the `hammer` tactic.
 
 Note that `sauto` or `hammer` never perform induction. When induction
 is needed, it must be done manually.
@@ -188,10 +190,24 @@ Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
 `lq:`, `brefl:`, `dep:`. Use your browser's "find" function to search
 for their descriptions in this section.
 
-The `best` tactic (since 1.3.1) automatically finds the best
-options for `sauto`.
+The `best` tactic (since 1.3.1) automatically finds the best options
+for `sauto`. It doesn't, however, find the dependencies: lemmas
+(`use:`), inversions (`inv:`), or constructors (`ctrs:`). To find the
+dependencies automatically use the `hammer` tactic.
 
-The options take arguments specified by:
+The `best` tactic accepts the same options as `sauto` - the provided
+options are appended to the options of the tried variants of `sauto`,
+possibly overriding them. For example, if you want to automatically
+find the best variant of `sauto` which performs search up to depth 3
+and uses lemma `lem1` then write:
+```
+best depth: 3 use: lem1
+```
+
+Note that immediately upon success you are supposed to replace the
+`best` tactic with the tactic shown in the response window.
+
+The `sauto` options take arguments specified by:
 ```
 <bopt> ::= on | off
 <db> ::= <hintDb> | <rewDb>
