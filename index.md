@@ -50,10 +50,10 @@ CoqHammer video tutorial:
 The tutorial files are available
 [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
-Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
-`lq:`, `brefl:`, `dep:`. Use your browser's "find" function to search
-for their descriptions in the [Options for sauto](#options-for-sauto)
-section of this page.
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `db:`, `l:`,
+`q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find" function to
+search for their descriptions in the
+[Options for sauto](#options-for-sauto) section of this page.
 
 The `best` tactic (since 1.3.1) automatically finds the best options
 for `sauto`. It doesn't, however, find the dependencies: lemmas
@@ -186,9 +186,9 @@ Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/co
 
 ### Options for sauto
 
-Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `l:`, `q:`,
-`lq:`, `brefl:`, `dep:`. Use your browser's "find" function to search
-for their descriptions in this section.
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `db:`, `l:`,
+`q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find" function to
+search for their descriptions in this section.
 
 The `best` tactic (since 1.3.1) automatically finds the best options
 for `sauto`. It doesn't, however, find the dependencies: lemmas
