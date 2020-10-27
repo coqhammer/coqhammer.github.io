@@ -147,9 +147,10 @@ From Hammer Require Import Tactics.
 
 The easiest way to use `sauto` is via the `best` tactic (since
 1.3.1). The `best` tactic tries a number of `sauto` variants with
-different options. However, familiarity with different tactics from
-the `Tactics` module and with various `sauto` options often results in
-more effective use.
+different options (see
+[Options for sauto](#options-for-sauto)). However, familiarity with
+different tactics from the `Tactics` module and with various `sauto`
+options often results in more effective use.
 
 Note that `sauto` and related tactics never perform induction. When
 induction is needed, it must be done manually.
