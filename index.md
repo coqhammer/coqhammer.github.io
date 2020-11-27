@@ -50,15 +50,16 @@ CoqHammer video tutorial:
 The tutorial files are available
 [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
 
-Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `db:`, `l:`,
-`q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find" function to
-search for their descriptions in the
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `unfold:`,
+`db:`, `l:`, `q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find"
+function to search for their descriptions in the
 [Options for sauto](#options-for-sauto) section of this page.
 
 The `best` tactic (since 1.3.1) automatically finds the best options
 for `sauto`. It doesn't, however, find the dependencies: lemmas
-(`use:`), inversions (`inv:`), or constructors (`ctrs:`). To find the
-dependencies automatically use the `hammer` tactic.
+(`use:`), inversions (`inv:`), constructors (`ctrs:`), or unfoldings
+(`unfold:`). The `hammer` tactic tries to find the dependencies
+automatically.
 
 Note that `sauto` or `hammer` never perform induction. When induction
 is needed, it must be done manually.
@@ -187,14 +188,15 @@ Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/co
 
 ### Options for sauto
 
-Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `db:`, `l:`,
-`q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find" function to
-search for their descriptions in this section.
+Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `unfold:`,
+`db:`, `l:`, `q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find"
+function to search for their descriptions in this section.
 
 The `best` tactic (since 1.3.1) automatically finds the best options
 for `sauto`. It doesn't, however, find the dependencies: lemmas
-(`use:`), inversions (`inv:`), or constructors (`ctrs:`). To find the
-dependencies automatically use the `hammer` tactic.
+(`use:`), inversions (`inv:`), constructors (`ctrs:`), or unfoldings
+(`unfold:`). The `hammer` tactic tries to find the dependencies
+automatically.
 
 The `best` tactic accepts the same options as `sauto` - the provided
 options are appended to the options of the tried variants of `sauto`,
