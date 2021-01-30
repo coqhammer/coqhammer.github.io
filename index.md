@@ -893,7 +893,7 @@ command                          | description
 
 ## Copyright and license
 
-Copyright (c) 2017-2020, Lukasz Czajka, TU Dortmund University.\
+Copyright (c) 2017-2021, Lukasz Czajka, TU Dortmund University.\
 Copyright (c) 2017-2018, Cezary Kaliszyk, University of Innsbruck.
 
 Distributed under the terms of LGPL 2.1.
