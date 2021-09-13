@@ -48,7 +48,7 @@ CoqHammer video tutorial:
 [part 2 (hammer)](https://www.youtube.com/watch?v=EEmpVCSqShA&list=PLXXF_svQE_b_vja6TWFbGNB266Et8m5yC).
 
 The tutorial files are available
-[here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples/tutorial).
+[here](https://github.com/lukaszcz/coqhammer/tree/coq8.13/examples/tutorial).
 
 Most useful `sauto` options: `use:`, `inv:`, `ctrs:`, `unfold:`,
 `db:`, `l:`, `q:`, `lq:`, `brefl:`, `dep:`. Use your browser's "find"
@@ -184,7 +184,7 @@ Additional variants of the solvers are used in the reconstruction
 backend of the `hammer` tactic. The solvers listed here are the ones
 most suited for standalone use.
 
-Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples).
+Some examples are available [here](https://github.com/lukaszcz/coqhammer/tree/coq8.13/examples).
 
 ### Options for sauto
 
@@ -738,7 +738,7 @@ command                          | description
 `Hammer_version`                 |  Prints the version of CoqHammer.
 `Hammer_cleanup`                 |  Resets the hammer cache.
 
-[This directory](https://github.com/lukaszcz/coqhammer/tree/coq8.12/examples)
+[This directory](https://github.com/lukaszcz/coqhammer/tree/coq8.13/examples)
 contains some examples.
 
 The intended use of the `hammer` tactic is to replace it upon success
@@ -846,7 +846,7 @@ command                          | description
 -------------------------------- | ---------------------------------------------------------
 `Set Hammer Debug`               |  Makes `hammer` print diagnostic info.
 `Hammer_print "name"`            |  Prints object `name` in hhterm format.
-`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.12/src/plugin/tptp_out.ml) module.
+`Hammer_transl "name"`           |  Prints all axioms resulting from the translation of `name` in the intermediate coqterm format accepted by the [`tptp_out.ml`](https://github.com/lukaszcz/coqhammer/tree/coq8.13/src/plugin/tptp_out.ml) module.
 `hammer_transl`                  |  Prints all axioms resulting from the translation of the current goal.
 `Hammer_features "name"`         |  Prints the features of `name`, bypassing the cache.
 `Hammer_features_cached "name"`  |  Prints the features of `name`, using and possibly modifying the cache.
@@ -907,5 +907,5 @@ Copyright (c) 2017-2018, Cezary Kaliszyk, University of Innsbruck.
 Distributed under the terms of LGPL 2.1.
 
 See
-[CREDITS](https://github.com/lukaszcz/coqhammer/tree/coq8.12/CREDITS.md)
+[CREDITS](https://github.com/lukaszcz/coqhammer/tree/coq8.13/CREDITS.md)
 for a full list of contributors.
