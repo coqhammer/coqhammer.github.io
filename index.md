@@ -822,6 +822,14 @@ it must be done manually before invoking `hammer`.
     Ignore dependencies blacklisted with the `Search Blacklist`
     vernacular command. Default: on.
 
+* `Add/Remove Hammer Filter module.`
+
+    Ignore dependencies from the given module. Since version 1.3.2.
+
+* `Test Hammer Filter.`
+
+    Print the currently ignored modules. Since version 1.3.2.
+
 * `Set/Unset Hammer ClosureGuards.`
 
     Should guards be generated for types of free variables? Setting
